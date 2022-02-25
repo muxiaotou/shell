@@ -46,3 +46,15 @@ uniq：去除重复的行
 
 tee：从标准输入读取，并写入标准输出和文件，双重输出
   -a  追加到文件，默认是覆盖写
+
+diff：逐行比较两个文件
+
+tr：字符转换、替换和删除
+
+#打印paaswd文件当中非root用户名、密码和默认shell
+cat test.txt  |grep -v root |cut -d: -f1,2,7 |tr ':' '\t'
+bin	x	/sbin/nologin
+daemon	x	/sbin/nologin
+adm	x	/sbin/nologin
+
+#截取当前主机IP；截取NETMASK；截取广播地址；截取MAC地址
