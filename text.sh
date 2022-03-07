@@ -39,10 +39,11 @@ sort：排序命令，从首字符向后，依次按ASCII码值进行比较，�
 
   sort -n -t: -k3 test.txt  以：为分隔符，按照数字排列第3列
 
-uniq：去除重复的行
+uniq：去除重复的行，需要优先使用sort排序，在使用uniq，因为uniq仅仅去重相邻的行！！！！！
   -c  仅仅计算重复的行
   -i  忽略大小写
   -d  只显示重复行
+  grep '23/Apr/2020' k.txt  |awk '{print $1}'|sort |uniq -c |sort -r
 
 tee：从标准输入读取，并写入标准输出和文件，双重输出
   -a  追加到文件，默认是覆盖写

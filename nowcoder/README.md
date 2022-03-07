@@ -60,7 +60,7 @@
     awk 'BEGIN{sum=0}{sum+=$6}END{print sum}' c.txt
 
     #打印重复行的行数
-    cat d.txt |awk '{print $2}'|sort |uniq -c |grep -v 1    //uniq  -c 打印重复的行数  
+    cat d.txt |awk '{print $2}'|sort |uniq -c |grep -v 1    //uniq  -c 打印重复的行数  ，uniq仅去重相邻的重复行，因此需要前面使用sort进行排序
 
     #多行求平均值
     awk '{if(NR==1){N=$1} else{sum+=$1}} END {printf ("%.3f", sum/N)}' e.txt 
@@ -112,7 +112,14 @@
     #倒序打印passwd文本
     awk -F':' '{for(i=NF;i>0;i--) if(i==1){printf("%s\n", $i)}else{printf("%s:",$i)}}' h.txt
 
-    TODO  SHELL18
+    #使用awk可以对列大小进行比较
+     awk '{print $1}' m.txt |sort |uniq -c |awk '{if($1>3) {print $1,$2}}'
+
+    #awk使用新的间隔符输出，直接在列变量中间加上双引号
+     awk '{print $4}' o.txt |awk -F':' '{print $2":"$3}' |sort |uniq -c |sort -r -k 1
+
+    #按照数值大小逆序排序
+    grep tcp p.txt |awk '{print $6}' |sort |uniq -c|sort -nrk  1|awk '{print $2,$1}'
 
 
     
