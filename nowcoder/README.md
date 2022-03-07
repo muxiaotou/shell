@@ -112,7 +112,9 @@
     #倒序打印passwd文本
     awk -F':' '{for(i=NF;i>0;i--) if(i==1){printf("%s\n", $i)}else{printf("%s:",$i)}}' h.txt
 
-    TODO  SHELL18
+    #
+
+    TODO  SHELL25
 
 
     
